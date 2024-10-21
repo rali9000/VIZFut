@@ -1,0 +1,40 @@
+.match {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &>* {
+        display: flex;
+        align-items: center;
+    }
+
+    * {
+        margin: 0;
+    }
+}
+
+.home,
+.away {
+    gap: var(--space-l);
+    font-size: var(--fs-m);
+    flex: 1;
+}
+
+.away {
+    justify-content: flex-end;
+}
+
+.score {
+    justify-content: center;
+    font-size: var(--fs-l);
+    font-weight: 900;
+}
+
+.indicator {
+    color: lightgreen;
+}
+
+.logo {
+    height: 48px;
+    aspect-ratio: 1;
+}
