@@ -6,7 +6,7 @@
  *  @see MatchScoreTeamInterface
  */
 export interface MatchScoreInterface {
-    id: number
+    id: number;
     teams: {
         home: MatchScoreTeamInterface;
         away: MatchScoreTeamInterface;
@@ -21,4 +21,9 @@ export interface MatchScoreTeamInterface {
     logo: string;
     winner: boolean | null;
     goals: number | null;
+}
+
+export interface LeagueScoresInterface {
+    matches: any[];
+    id: number;
 }

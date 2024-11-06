@@ -25,18 +25,19 @@
 	--space-3xl: clamp(6.75rem, 6.4891rem + 1.3043vi, 7.5rem);
 
 	/* Border Radius */
+	--round-xs: .125rem;
 	--round-s: .25rem;
 	--round-m: .625rem;
 	--round-l: 1rem;
 	--round-full: 100vmax;
 
 	/* Colors */
-	--text: 228, 33%, 14%;
-	--background: 270, 25%, 98%;
-	--primary: 230, 19%, 38%;
-	--secondary: 289, 25%, 64%;
-	--tertiary: 278, 23%, 75%;
-	--accent: 45, 96%, 65%;
+	--text: 120, 11%, 9%;
+	--background: 120, 25%, 97%;
+	--primary: 130, 25%, 58%;
+	--secondary: 199, 24%, 72%;
+	--tertiary: 215, 23%, 61%;
+	--accent: 130, 25%, 58%;
 	--shadow: 23, 19%, 5%;
 	--glow: 48, 65%, 100%;
 	--test: 255, 100%, 100%;
@@ -49,12 +50,12 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--text: 270, 25%, 98%;
-		--background: 228, 33%, 14%;
-		--primary: 289, 25%, 64%;
-		--secondary: 278, 23%, 75%;
-		--tertiary: 230, 19%, 38%;
-		--accent: 45, 96%, 65%;
+		--text: 120, 11%, 91%;
+		--background: 120, 25%, 3%;
+		--primary: 129, 18%, 28%;
+		--secondary: 202, 24%, 28%;
+		--tertiary: 215, 24%, 29%;
+		--accent: 130, 25%, 58%;
 	}
 }
 
@@ -66,5 +67,6 @@ html {
 	background-color: hsl(var(--background));
 	color: hsl(var(--text));
 	scroll-behavior: smooth;
+	/* interpolate-size: allow-keywords; */
 	/* scroll-padding: calc(var(--header-height)); */
 }

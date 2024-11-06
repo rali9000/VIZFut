@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-block: var(--space-s);
 
     &>* {
         display: flex;
@@ -15,16 +16,25 @@
 
 .home,
 .away {
-    gap: var(--space-l);
+    gap: var(--space-s);
     font-size: var(--fs-m);
     flex: 1;
 }
 
-.away {
+.home {
     justify-content: flex-end;
 }
 
+.winner {
+    font-weight: 600;
+}
+
+.loser {
+    color: color-mix(in hsl, hsl(var(--tertiary)), hsl(var(--text)) 85%);
+}
+
 .score {
+    margin-inline: var(--space-m);
     justify-content: center;
     font-size: var(--fs-l);
     font-weight: 900;
@@ -37,4 +47,5 @@
 .logo {
     height: 48px;
     aspect-ratio: 1;
+    object-fit: contain;
 }

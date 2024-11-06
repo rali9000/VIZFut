@@ -1,75 +1,55 @@
-// import API_HOST, { Env } from './functions/APIData'
-import matches from './assets/data/sample/fixtures.json'
-import MatchScore from './components/MatchScore';
-import { MatchScoreInterface, MatchScoreTeamInterface } from './types';
+import { useEffect, useState } from 'react';
+import fixtures from './assets/data/sample/fixtures.json'
+import LeagueScores from './components/LeagueScores';
+import { fetchFixturesByDate } from './functions/APIData';
 
 function App() {
+  const [matches, setMatches] = useState<any[]>((fixtures as any).response);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [triggerFetch, setTriggerFetch] = useState<boolean>(false);
+  const [hasFetched, setHasFetched] = useState<boolean>(false);
 
-  // console.log(API_HOST.fetch(req, env));
+  useEffect(() => {
+    if (hasFetched || !triggerFetch) return;
 
-  // fetch(`https://v3.football.api-sports.io/fixtures?date=2024-10-19&timezone=${Intl.DateTimeFormat().resolvedOptions().timeZone}`, {
-  //   "method": "GET",
-  //   "headers": {
-  //     "x-rapidapi-host": "v3.football.api-sports.io",
-  //     "x-rapidapi-key": "xXXXXXXXXXXXXXXXXXXXXXXXXXXXXx"
-  //   }
-  // })
-  // .then(response => {
-  //   console.log(response);
-  // })
-  // .catch(err => {
-  //   console.log(err);
-  // });
+    const fetchToday = async () => {
+      try {
+        setLoading(true);
+        let today = new Date();
+        console.log(today);
+        const data = await fetchFixturesByDate(today);
+        setMatches((data as any).response);
+        setHasFetched(true);
+      } catch (err) {
+        setError("Failed to fetch today's games.");
+      } finally {
+        setLoading(false);
+      }
+    }
 
-  let premGames = (matches as any).response.filter((match: any) => match.league.id === 39);
-  let laligaGames = (matches as any).response.filter((match: any) => match.league.id === 140);
+    fetchToday();
+  }, [triggerFetch, hasFetched]);
 
-  function matchScoreProps (match: any):MatchScoreInterface {
-    var props: MatchScoreInterface;
-      let home:MatchScoreTeamInterface = {
-        id: match.teams.home.id,
-        name: match.teams.home.name,
-        logo: match.teams.home.logo,
-        winner: match.teams.home.winner,
-        goals: match.goals.home,
-      };
-      let away:MatchScoreTeamInterface = {
-        id: match.teams.away.id,
-        name: match.teams.away.name,
-        logo: match.teams.away.logo,
-        winner: match.teams.away.winner,
-        goals: match.goals.away,
-      };
-      props = {
-        id: match.fixture.id,
-        teams: {home: home, away: away},
-        timestamp: match.fixture.timestamp,
-        status: match.fixture.status
-      };
-    return props;
+  const handleFetchClick = () => {
+    if (!hasFetched) setTriggerFetch(true);
   }
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
+  // World Cup, Champion's League, English Premier League, La Liga, Serie A, Bundesliga, Ligue 1, Eredivisie
+  let homeLeagueIds = [1, 2, 39, 140, 135, 78, 61, 88];
 
   return (
     <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      {premGames.map((match: any, index: number) => (
-        <MatchScore
-          {...matchScoreProps(match)} 
-          key={index}
-        />
-      ))}
-      {laligaGames.map((match: any, index: number) => (
-        <MatchScore
-          {...matchScoreProps(match)}
-          key={index}
+      <h1>Cookie Clicker Butt</h1>
+      <button onClick={handleFetchClick}>Fetch Today's Games</button>
+      {homeLeagueIds.map((id: number, index: number) => (
+        <LeagueScores
+          matches={matches.filter((match: any) => match.league.id === id)}
+          id={id}
+          key={`${index}_${id}`}
         />
       ))}
     </>

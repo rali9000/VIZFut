@@ -1,5 +1,7 @@
 import styles from "./MatchScore.module.css"
 import { MatchScoreInterface } from "../types"
+import placeholder from "../assets/images/placeholder/badge.webp";
+import { useState, useRef, useEffect } from "react";
 
 const MatchScore = ({ teams, timestamp, status }: MatchScoreInterface) => {
     let home = teams.home;
@@ -25,18 +27,30 @@ const MatchScore = ({ teams, timestamp, status }: MatchScoreInterface) => {
         );
     }
 
+    
+    const [isIntersecting, setIsIntersecting] = useState(false);
+    const ref = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) => {
+            setIsIntersecting(entry.isIntersecting);
+        }, {rootMargin: "12px"});
+        if (ref.current) observer.observe(ref.current);
+        return () => observer.disconnect();
+    }, []);
+
     return (
-        <article className={styles.match}>
-            <div className={styles.home}>
-                <img src={home.logo} className={styles.logo} alt="" />
-                <p>{home.name}</p>
-            </div>
-            {score()}
-            <div className={styles.away}>
-                <p>{away.name}</p>
-                <img src={away.logo} className={styles.logo} alt="" />
-            </div>
-        </article>
+        <li className={styles.match}>
+                <div className={styles.home}>
+                    <p className={home.winner ? styles.winner : styles.loser}>{home.name}</p>
+                    <img src={(isIntersecting) ? home.logo : placeholder} ref={ref} className={styles.logo} alt="" draggable="false" loading="lazy" />
+                </div>
+                {score()}
+                <div className={styles.away}>
+                    <img src={(isIntersecting) ? away.logo : placeholder} ref={ref} className={styles.logo} alt="" draggable="false" loading="lazy" />
+                    <p className={away.winner ? styles.winner : styles.loser}>{away.name}</p>
+                </div>
+        </li>
     )
 }
 
