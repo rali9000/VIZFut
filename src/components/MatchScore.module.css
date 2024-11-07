@@ -3,6 +3,8 @@
     justify-content: space-between;
     align-items: center;
     padding-block: var(--space-s);
+    background-color: transparent;
+    transition: background-color 250ms ease-in-out;
 
     &>* {
         display: flex;
@@ -11,6 +13,11 @@
 
     * {
         margin: 0;
+    }
+
+    &:hover {
+        background-color: hsl(var(--tertiary), .35);
+        cursor: pointer;
     }
 }
 
@@ -25,12 +32,8 @@
     justify-content: flex-end;
 }
 
-.winner {
-    font-weight: 600;
-}
-
 .loser {
-    color: color-mix(in hsl, hsl(var(--tertiary)), hsl(var(--text)) 85%);
+    color: color-mix(in lch, hsl(var(--tertiary)), hsl(var(--text), .75) 75%);
 }
 
 .score {

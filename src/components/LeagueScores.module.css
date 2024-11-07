@@ -4,7 +4,7 @@
     overflow: hidden;
     user-select: none;
     margin: var(--space-l);
-    background-color: hsl(var(--secondary), .75);
+    background-color: hsl(var(--tertiary), .75);
 }
 
 .league.collapsed {
@@ -79,6 +79,6 @@
         list-style: none;
     }
     &> *+* {
-        border-top: solid hsl(var(--background), .5) .125rem;
+        border-top: solid color-mix(in lch, hsl(var(--background)), hsl(var(--secondary)) 35%) .125rem;
     }
 }

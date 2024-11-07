@@ -1,3 +1,5 @@
+import { MouseEventHandler } from "react";
+
 /**
  *  @param id the id of the match
  *  @param teams an object of the form <code>{ home, away }</code> containing the home and away teams of the match
@@ -26,4 +28,9 @@ export interface MatchScoreTeamInterface {
 export interface LeagueScoresInterface {
     matches: any[];
     id: number;
+}
+
+export interface DateSelectorInterface {
+    date: Date;
+    handleClick: MouseEventHandler<HTMLButtonElement>;
 }

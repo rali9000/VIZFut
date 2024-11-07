@@ -41,15 +41,15 @@ const MatchScore = ({ teams, timestamp, status }: MatchScoreInterface) => {
 
     return (
         <li className={styles.match}>
-                <div className={styles.home}>
-                    <p className={home.winner ? styles.winner : styles.loser}>{home.name}</p>
-                    <img src={(isIntersecting) ? home.logo : placeholder} ref={ref} className={styles.logo} alt="" draggable="false" loading="lazy" />
-                </div>
-                {score()}
-                <div className={styles.away}>
-                    <img src={(isIntersecting) ? away.logo : placeholder} ref={ref} className={styles.logo} alt="" draggable="false" loading="lazy" />
-                    <p className={away.winner ? styles.winner : styles.loser}>{away.name}</p>
-                </div>
+            <div className={styles.home}>
+                <p className={home.winner === false ? styles.loser : styles.winner}>{home.name}</p>
+                <img src={(isIntersecting) ? home.logo : placeholder} ref={ref} className={styles.logo} alt="" draggable="false" loading="lazy" />
+            </div>
+            {score()}
+            <div className={styles.away}>
+                <img src={(isIntersecting) ? away.logo : placeholder} ref={ref} className={styles.logo} alt="" draggable="false" loading="lazy" />
+                <p className={away.winner === false ? styles.loser : styles.winner}>{away.name}</p>
+            </div>
         </li>
     )
 }

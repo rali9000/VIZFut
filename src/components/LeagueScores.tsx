@@ -13,25 +13,24 @@ const LeagueScores = ({ matches, id }: LeagueScoresInterface) => {
                 setIsIntersecting(entry.isIntersecting);
             }, {rootMargin: "24px"});
             if (ref.current) observer.observe(ref.current);
+            console.log(ref.current);
             return () => observer.disconnect();
-        }, []);
+        }, [ref]);
 
     if (matches.length === 0) return null;
 
     function matchScoreProps(match: any): MatchScoreInterface {
-        let homeLogo = match.teams.home.logo;
-        let awayLogo = match.teams.away.logo;
         const home: MatchScoreTeamInterface = {
             id: match.teams.home.id,
             name: match.teams.home.name,
-            logo: homeLogo,
+            logo: match.teams.home.logo,
             winner: match.teams.home.winner,
             goals: match.goals.home
         };
         const away: MatchScoreTeamInterface = {
             id: match.teams.away.id,
             name: match.teams.away.name,
-            logo: awayLogo,
+            logo: match.teams.away.logo,
             winner: match.teams.away.winner,
             goals: match.goals.away
         };
@@ -45,7 +44,7 @@ const LeagueScores = ({ matches, id }: LeagueScoresInterface) => {
     }
 
     let leagueName = matches[0].league.name;
-    let sectionId = `${leagueName.replace(" ", "_")}_section`.toLowerCase();
+    let sectionId = `${leagueName.replace(" ", "_")}_${id}`.toLowerCase();
     let leagueLogo = `https://media.api-sports.io/football/leagues/${id}.png`;
     let leagueFlag = matches[0].league.flag;
 
