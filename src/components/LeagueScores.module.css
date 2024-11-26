@@ -4,81 +4,97 @@
     overflow: hidden;
     user-select: none;
     margin: var(--space-l);
-    background-color: hsl(var(--tertiary), .75);
+    background-color: hsl(var(--secondary), .25);
+    width: clamp(800px, 100%, 1000px);
+    box-shadow: hsl(var(--shadow), .15) .125rem .125rem .25rem;
+
+    &.collapsed {
+        >.info>button {
+            content: '&#9650;';
+        }
+
+        >.matches {
+            max-height: 0;
+        }
+    }
 }
 
-.league.collapsed {
-    >.info>button {
-        content: '&#9650;';
-    }
-
-    >.matches {
-        max-height: 0;
-    }
-}
-
-.info {
-    display: grid;
-    grid-template-columns: 1fr max-content 1fr;
-    place-items: center;
-    padding-block: var(--space-xs);
-    gap: var(--space-s);
-    position: relative;
-    position: relative;
-    overflow: hidden;
+.top_bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: hsl(var(--secondary));
     color: hsl(var(--text));
+    padding: var(--space-s) var(--space-m);
+
+    >.info {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+
+        &>h3 {
+            margin: 0;
+            font-size: var(--fs-xl);
+        }
+
+        >.logo {
+            height: 3rem;
+            width: 4rem;
+            object-fit: contain;
+        }
+
+        >.flag {
+            height: var(--fs-m);
+            justify-self: flex-start;
+            border-radius: var(--round-xs);
+        }
+    }
+
 
     >button {
-        content: '&#9660;';
-        position: absolute;
-        top: 50%;
-        translate: 0 -50%;
-        right: 2rem;
+        height: 3rem;
         aspect-ratio: 1;
         border-radius: var(--round-full);
         border: none;
         color: inherit;
+
         background-color: transparent;
         transition: background-color 250ms ease-in-out;
+
         >p {
             margin: 0;
-            padding: var(--space-xs);
             color: inherit;
         }
+
+        &:hover {
+            cursor: pointer;
+            background-color: hsl(var(--primary), .25);
+        }
     }
-
-    >button:hover {
-        cursor: pointer;
-        background-color: hsl(var(--background), .25); 
-    }
-
-    &>h3 {
-        margin: 0;
-        font-size: var(--fs-xl);
-    }
-}
-
-.logo {
-    height: 3rem;
-    justify-self: flex-start;
-    margin-left: var(--space-l);
-}
-
-.flag {
-    height: 1rem;
-    justify-self: flex-start;
-    border-radius: var(--round-xs);
 }
 
 .matches {
     display: grid;
-    background-color: hsl(var(--background), .7);
     padding: 0;
     margin: 0;
-    &>* {
+
+    >* {
         list-style: none;
     }
-    &> *+* {
-        border-top: solid color-mix(in lch, hsl(var(--background)), hsl(var(--secondary)) 35%) .125rem;
+
+    & :last-child {
+        border-bottom: unset !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .top_bar {
+        color: hsl(var(--background));
+        background-color: hsl(var(--primary));
+
+        >button:hover {
+            background-color: hsl(var(--secondary), .25);
+        }
     }
 }

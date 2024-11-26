@@ -32,12 +32,11 @@
 	--round-full: 100vmax;
 
 	/* Colors */
-	--text: 120, 11%, 9%;
-	--background: 120, 25%, 97%;
-	--primary: 130, 25%, 58%;
-	--secondary: 199, 24%, 72%;
-	--tertiary: 215, 23%, 61%;
-	--accent: 130, 25%, 58%;
+	--text: 340, 10%, 6%;
+	--background: 340, 14%, 100%;
+	--primary: 345, 12%, 26%;
+	--secondary: 19, 12%, 70%;
+	--accent: 155, 53%, 45%;
 	--shadow: 23, 19%, 5%;
 	--glow: 48, 65%, 100%;
 	--test: 255, 100%, 100%;
@@ -50,12 +49,11 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--text: 120, 11%, 91%;
-		--background: 120, 25%, 3%;
-		--primary: 129, 18%, 28%;
-		--secondary: 202, 24%, 28%;
-		--tertiary: 215, 24%, 29%;
-		--accent: 130, 25%, 58%;
+		--text: 340, 10%, 94%;
+		--background: 340, 14%, 4%;
+		--primary: 345, 12%, 74%;
+		--secondary: 19, 12%, 30%;
+		--accent: 155, 69%, 37%;
 	}
 }
 

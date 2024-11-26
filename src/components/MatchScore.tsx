@@ -22,6 +22,7 @@ const MatchScore = ({ id, teams, timestamp, status }: MatchScoreInterface) => {
                 <p>
                     {text}
                 </p>
+                <span  className={styles.status}>{status}</span>
                 {away.winner && indicator}
             </div>
         );

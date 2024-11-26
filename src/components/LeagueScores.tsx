@@ -60,11 +60,13 @@ const LeagueScores = ({ matches, id }: LeagueScoresInterface) => {
 
     return (
         <article className={styles.league} id={sectionId} ref={ref}>
-            <div className={styles.info}>
+            <div className={styles.top_bar}>
+                <div className={styles.info}>
+                    <img src={(isIntersecting) ? leagueLogo : placeholder} className={styles.logo} alt="" draggable="false" loading="lazy" />
+                    <h3>{leagueName}</h3>
+                    <img src={(isIntersecting) ? leagueFlag : undefined} className={styles.flag} alt="" draggable="false" loading="lazy" />
+                </div>
                 <button onClick={collapseLeague} id={`${sectionId}_collapse_btn`}><p>▲</p></button>
-                <img src={(isIntersecting) ? leagueLogo : placeholder} className={styles.logo} alt="" draggable="false" loading="lazy" />
-                <h3>{leagueName}</h3>
-                <img src={(isIntersecting) ? leagueFlag : undefined} className={styles.flag} alt="" draggable="false" loading="lazy" />
             </div>
             <ul className={styles.matches}>
                 {matches?.map((match: any, index: number) => (
