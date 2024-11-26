@@ -1,9 +1,9 @@
 import styles from "./MatchScore.module.css"
 import { MatchScoreInterface } from "../types"
-import placeholder from "../assets/images/placeholder/badge.webp";
+import placeholder from "../assets/images/placeholder/badge.png";
 import { useState, useRef, useEffect } from "react";
 
-const MatchScore = ({ teams, timestamp, status }: MatchScoreInterface) => {
+const MatchScore = ({ id, teams, timestamp, status }: MatchScoreInterface) => {
     let home = teams.home;
     let away = teams.away;
     let kickoff = new Date(0);
@@ -40,7 +40,7 @@ const MatchScore = ({ teams, timestamp, status }: MatchScoreInterface) => {
     }, []);
 
     return (
-        <li className={styles.match}>
+        <li className={styles.match} id={id.toString()}>
             <div className={styles.home}>
                 <p className={home.winner === false ? styles.loser : styles.winner}>{home.name}</p>
                 <img src={(isIntersecting) ? home.logo : placeholder} ref={ref} className={styles.logo} alt="" draggable="false" loading="lazy" />

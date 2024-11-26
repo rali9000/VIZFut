@@ -39,7 +39,8 @@ function App() {
     let desiredDate: Date = date;
     let id = event.target.id;
     if (id === "inc_btn") desiredDate.setDate(desiredDate.getDate() + 1);
-    else desiredDate.setDate(desiredDate.getDate() - 1);
+    else if (id === "dec_btn") desiredDate.setDate(desiredDate.getDate() - 1);
+    else desiredDate = new Date();
     setDate(desiredDate);
     setHasFetched(false);
     handleFetchClick();

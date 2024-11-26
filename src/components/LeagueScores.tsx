@@ -1,21 +1,22 @@
 import { LeagueScoresInterface, MatchScoreInterface, MatchScoreTeamInterface } from '../types';
 import MatchScore from './MatchScore';
 import styles from "./LeagueScores.module.css";
-import placeholder from "../assets/images/placeholder/badge.webp";
+import placeholder from "../assets/images/placeholder/badge.png";
 import { useEffect, useRef, useState } from 'react';
 const LeagueScores = ({ matches, id }: LeagueScoresInterface) => {
     
         const [isIntersecting, setIsIntersecting] = useState(false);
-        const ref = useRef(null);
+        const ref = useRef<HTMLDivElement | null>(null);
     
         useEffect(() => {
+            if (!ref.current) return;
             const observer = new IntersectionObserver(([entry]) => {
                 setIsIntersecting(entry.isIntersecting);
             }, {rootMargin: "24px"});
-            if (ref.current) observer.observe(ref.current);
-            console.log(ref.current);
-            return () => observer.disconnect();
-        }, [ref]);
+            const element = ref.current;
+            observer.observe(element);
+            return () => observer.unobserve(element);
+        }, [ref, matches]);
 
     if (matches.length === 0) return null;
 
