@@ -104,7 +104,7 @@ function Home() {
 
     return (
         <>
-            <h1>FutCentre</h1>
+            <h1>VIZ Fut</h1>
             <button onClick={today}>Fetch Today's Games</button>
             <div className="main_content_wrapper">
                 <section className='leagues_wrapper'>
