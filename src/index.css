@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
 :root {
 	/* Font sizes */
+	--fs-3xs: clamp(0.512rem, 0.5532rem + -0.0531vw, 0.5425rem);
+	--fs-2xs: clamp(0.64rem, 0.6549rem + -0.0192vw, 0.651rem);
 	--fs-xs: clamp(0.7813rem, 0.7747rem + 0.0326vi, 0.8rem);
 	--fs-s: clamp(0.9375rem, 0.9158rem + 0.1087vi, 1rem);
 	--fs-m: clamp(1.125rem, 1.0815rem + 0.2174vi, 1.25rem);
@@ -40,10 +44,17 @@
 	--shadow: 23, 19%, 5%;
 	--glow: 48, 65%, 100%;
 	--test: 255, 100%, 100%;
-
-	/* Cubic Bezier */
+	--rating-8: 155, 87%, 48%;
+	--rating-7: 155, 75%, 38%;
+	--rating-6: 24, 78%, 57%;
+	--rating-5: 344, 59%, 33%;
+	
+	/* Timing Functions */
 	--cubic-bezier: cubic-bezier(0.075, 0.82, 0.165, 1);
-
+	--overshoot-in-out: linear(0, -0.002 2.5%, -0.009 5.3%, -0.042 14.3%, -0.051 17.3%, -0.056 20%, -0.056 22.5%, -0.054 24.1%, -0.05 25.7%, -0.043 27.2%, -0.034 28.7%, -0.009 31.5%, 0.025 34.2%, 0.067 36.7%, 0.117 39.1%, 0.176 41.4%, 0.246 43.7%, 0.312 45.6%, 0.383 47.4%, 0.574 51.6%, 0.657 53.6%, 0.741 55.9%, 0.816 58.3%, 0.883 60.9%, 0.937 63.5%, 0.981 66.2%, 1.014 69%, 1.034 71.3%, 1.048 73.8%, 1.055 76.4%, 1.057 79.1%, 1.054 81.5%, 1.047 84.1%, 1.016 92.5%, 1.007 95.3%, 1.002 97.8%, 1);
+	--overshoot: linear(0, 0.178 4.5%, 0.336 9%, 0.477 13.6%, 0.604 18.4%, 0.713 23.3%, 0.762 25.8%, 0.806 28.3%, 0.847 30.9%, 0.884 33.5%, 0.917 36.2%, 0.946 38.9%, 0.969 41.3%, 0.989 43.8%, 1.006 46.4%, 1.02 49%, 1.032 51.7%, 1.041 54.5%, 1.048 57.3%, 1.051 60.3%, 1.053 65%, 1.048 70.2%, 1.039 75.7%, 1.008 91%, 1.002 95.7%, 1);
+	
+	
 	--header-height: 80px
 }
 
@@ -53,9 +64,14 @@
 		--background: 340, 14%, 4%;
 		--primary: 345, 12%, 74%;
 		--secondary: 19, 12%, 30%;
-		--accent: 155, 69%, 37%;
+		--accent: 155, 69%, 47%;
+		--rating-8: 155, 87%, 18%;
+		--rating-7: 155, 75%, 38%;
+		--rating-6: 24, 78%, 37%;
+		--rating-5: 344, 59%, 33%;
 	}
-}
+};
+
 
 html {
 	font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -65,6 +81,12 @@ html {
 	background-color: hsl(var(--background));
 	color: hsl(var(--text));
 	scroll-behavior: smooth;
-	/* interpolate-size: allow-keywords; */
+	interpolate-size: allow-keywords;
 	/* scroll-padding: calc(var(--header-height)); */
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
+	scrollbar-width: none;
 }

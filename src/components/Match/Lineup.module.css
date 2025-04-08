@@ -1,0 +1,89 @@
+.lineup_wrapper {
+    --_primary: transparent;
+    --_number: transparent;
+    --_border: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 480px;
+
+    .lineup_row {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        gap: var(--space-m);
+        min-height: 100%;
+        user-select: none;
+        flex-grow: 1;
+
+        .player {
+            --_border-size: 0.25rem;
+            display: grid;
+            place-items: center;
+            gap: var(--space-3xs);
+            height: min-content;
+            font-size: var(--fs-xs);
+
+            .portrait {
+                position: relative;
+
+                img {
+                    height: var(--space-2xl);
+                    aspect-ratio: 1;
+                    border-radius: var(--round-full);
+                    border: var(--_border-size) solid var(--_primary);
+                }
+    
+                span {
+                    position: absolute;
+                    display: grid;
+                    place-items: center;
+                    width: 2em;
+                    aspect-ratio: 1;
+                    border-radius: var(--round-full);
+                    color: hsl(var(--text));
+                }
+
+                .assist, .goal {
+                    aspect-ratio: unset;
+                    right: 0;
+                    background-color: var(--_primary);
+                    color: var(--_number);
+                    height: 2em;
+                    font-size: var(--fs-xs);
+                }
+
+                .assist {
+                    bottom: 50%;
+                    translate: calc(50% - var(--_border-size)) 50%;
+                    svg {
+                        width: 1em;
+                    }
+                }
+
+                .goal {
+                    bottom: 0;
+                }
+                
+                .rating {
+                    top: 0;
+                    left: 0;
+                    aspect-ratio: 2/1;
+                    translate: calc(-50% + var(--_border-size)) 50%;
+                    font-size: var(--fs-xs);
+                    font-weight: 600;
+                }
+                
+                .number {
+                    aspect-ratio: 1;
+                    font-size: var(--fs-xs);
+                    bottom: 0;
+                    left: 0;
+                    font-weight: 900;
+                    background-color: var(--_primary);
+                    color: var(--_number);
+                }
+            }
+        }
+    }
+}

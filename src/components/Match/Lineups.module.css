@@ -1,0 +1,60 @@
+.lineups_wrapper {
+    background-color: hsl(var(--secondary), 0.25);
+    padding: var(--space-m);
+    display: grid;
+    gap: var(--space-s);
+    border-radius: var(--round-l);
+    box-shadow: 0.5rem 0.5rem 1rem -0.5rem hsl(var(--shadow), .25);
+
+    .lineups {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        overflow: clip;
+        aspect-ratio: 10.7/7;
+
+        >article {
+            width: 48%;
+            height: 100%;
+        }
+
+        .field {
+            --_inset: var(--space-3xs);
+            background-color: hsl(var(--primary));
+            position: absolute;
+            inset: 50%;
+            translate: -50% -50%;
+            z-index: -1;
+            opacity: 0.1;
+            height: calc(100% - var(--_inset));
+            width: calc(100% - var(--_inset));
+            mask-image: url('../../assets/images/field_h.svg');
+            mask-size: 100% 100%;
+            mask-repeat: no-repeat;
+        }
+    }
+
+    .coaches_wrapper,
+    .coach {
+        display: flex;
+        align-items: center;
+    }
+
+    .coaches_wrapper {
+        justify-content: space-between;
+        margin-inline: var(--space-2xs);
+        .coach {
+            background-color: hsl(var(--secondary), 0.25);
+            padding: var(--space-s);
+            border-radius: var(--round-m);
+            user-select: none;
+            gap: var(--space-s);
+            font-size: var(--fs-m);
+            box-shadow: 0.25rem 0.25rem 0.5rem -0.25rem hsl(var(--shadow), .25);
+            img {
+                border-radius: var(--round-full);
+                height: var(--space-l);
+            }
+        }
+    }
+}

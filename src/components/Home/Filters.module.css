@@ -1,0 +1,103 @@
+.filters_wrapper {
+    max-width: max-content;
+
+    .title>span {
+        font-size: var(--fs-xl);
+        letter-spacing: -0.2em;
+        clip-path: polygon(50% 100%, 0 0, 100% 0);
+        aspect-ratio: 1;
+        user-select: none;
+    }
+
+    .filters {
+        display: grid;
+        gap: 1rem;
+        padding: 2rem;
+
+        .filter {
+            margin-inline: -1rem;
+            padding: 1rem;
+            background-color: hsl(var(--secondary), .25);
+            border-radius: var(--round-m);
+            overflow: clip;
+            box-shadow: hsl(var(--shadow), .1) .05rem .05rem .125rem;
+
+            .filter_info {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: max-content;
+
+                h4 {
+                    font-size: var(--fs-m);
+                    margin: 0;
+                }
+            }
+
+            .filter_content {
+                margin-top: 1rem;
+
+                >ul {
+                    display: grid;
+                    gap: 1rem;
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+
+                    >li {
+                        height: 3.5rem;
+                        border-radius: var(--round-m);
+                        transition: scale 250ms var(--overshoot),
+                            opacity 250ms ease-in-out,
+                            background-color 250ms ease-in-out,
+                            color 250ms ease-in-out;
+
+                        opacity: .25;
+                        scale: .95;
+                        color: hsl(var(--secondary), .75);
+                        background-color: hsl(var(--background));
+
+                        &:has(input:checked) {
+                            color: inherit;
+                            background-color: hsl(var(--secondary));
+                            scale: 1;
+                            opacity: 1;
+
+                            &:hover {
+                                background-color: hsl(var(--secondary), .5)!important;
+                            }
+                        }
+
+                        &:hover {
+                            background-color: hsl(var(--secondary), .1)!important;
+                            color: hsl(var(--primary))!important;
+                        }
+
+                        >label {
+                            display: flex;
+                            padding-inline: 1rem 1rem;
+                            gap: 1rem;
+                            align-items: center;
+                            width: 22ch;
+                            height: 100%;
+                            position: relative;
+                            cursor: pointer;
+                            font-size: var(--fs-l);
+
+                            >img {
+                                height: 1lh;
+                                width: 2rem;
+                                object-fit: contain;
+                            }
+
+                            >input {
+                                position: absolute;
+                                visibility: hidden;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

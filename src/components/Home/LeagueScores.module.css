@@ -1,0 +1,50 @@
+.league {
+    min-width: 50rem;
+    overflow: clip;
+    opacity: 1;
+    height: auto;
+    visibility: visible;
+    transition-behavior: allow-discrete;
+    transition: opacity 250ms ease-in-out,
+        height 500ms ease-in-out,
+        visibility 500ms ease-in-out;
+
+    &.inactive {
+        opacity: 0;
+        height: 0;
+        visibility: hidden;
+    }
+}
+
+.info {
+    >.logo {
+        height: 3rem;
+        width: 4rem;
+        object-fit: contain;
+    }
+
+    >.flag {
+        height: var(--fs-m);
+        justify-self: flex-start;
+        border-radius: var(--round-xs);
+    }
+}
+
+.matches {
+    display: grid;
+    padding: 0;
+    margin: 0;
+    max-height: max-content;
+    visibility: visible;
+    transition-behavior: allow-discrete;
+    transition: max-height 500ms ease-in-out,
+        visibility 510ms ease;
+
+    >* {
+        list-style: none;
+    }
+
+    & :last-child {
+        border-bottom: unset !important;
+    }
+}

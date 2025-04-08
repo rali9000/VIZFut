@@ -34,3 +34,27 @@ export async function fetchFixturesByDate(date: string | Date) {
 		return null;
 	}
 }
+
+export async function fetchFixturesByID(id: string | number) {
+
+	try {
+		const response = await fetch(`https://${apiHost}/fixtures?id=${id}`, {
+			"method": "GET",
+			"headers": {
+				"x-rapidapi-host": `${apiHost}`,
+				"x-rapidapi-key": `${apiKey}`
+			}
+		});
+
+		if (!response.ok) {
+			console.error("Failed to fetch fixtures:", response.statusText);
+			return null;
+		}
+		const data = await response.json();
+		return data;
+
+	} catch (error) {
+		console.error("Error fetching fixtures:", error);
+		return null;
+	}
+}

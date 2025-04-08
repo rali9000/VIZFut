@@ -1,0 +1,95 @@
+.collapse_btn {
+    height: 3rem;
+    aspect-ratio: 1;
+    border-radius: var(--round-full);
+    border: none;
+    color: inherit;
+    padding: 0;
+
+    background-color: transparent;
+    transition: background-color 250ms ease-in-out;
+
+    &.small {
+        font-size: var(--fs-xs);
+    }
+
+    >span {
+        margin: auto;
+        color: inherit;
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: hsl(var(--primary), .25);
+    }
+}
+
+.title_bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--text));
+    padding: var(--space-s) var(--space-m);
+
+    >* {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+
+        >h3 {
+            margin: 0;
+            font-size: var(--fs-l);
+        }
+    }
+}
+
+.card_sec {
+    display: grid;
+    border-radius: var(--round-l);
+    overflow: hidden;
+    user-select: none;
+    background-color: hsl(var(--secondary), .25);
+    width: 100%;
+    box-shadow: hsl(var(--shadow), .15) .125rem .125rem .25rem;
+}
+
+.collapsed {
+    max-height: 0;
+    margin: 0!important;
+    padding-block: 0!important;
+    overflow: clip;
+    visibility: hidden;
+}
+
+.main_content_wrapper {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-l);
+    position: relative;
+    margin-inline:  var(--space-m);
+    .filters_wrapper {
+        height: min-content;
+        position: sticky;
+        top: 1rem;
+    }
+}
+
+.leagues_wrapper {
+    display: grid;
+    gap: var(--space-m);
+    margin-bottom: var(--space-xl);
+}
+
+@media (prefers-color-scheme: dark) {
+    article .title_bar {
+        color: hsl(var(--background));
+        background-color: hsl(var(--primary));
+        background-image: linear-gradient(to right, hsl(var(--text), .5) 25%, hsl(var(--text), 0) 75%);
+        
+        >button:hover {
+            background-color: hsl(var(--secondary), .25);
+        }
+    }
+}

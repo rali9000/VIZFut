@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 107 70" style="cursor: default;" preserveAspectRatio="none">
+<g fill="none" stroke="#fff" stroke-width="0.5" transform="translate(1 1)">
+	<path id="Border" d="M 0 0 h 105 v 68 h -105 Z"/>
+	<path id="Centre line" d="M 52.5 0 v 68"/>
+	<circle id="Centre circle" r="9.15" cx="52.5" cy="34"/>
+	<circle id="Centre mark" r="0.75" cx="52.5" cy="34" fill="#fff" stroke="none"/>
+	<g id="Penalty area">
+		<path id="Penalty area line" d="M 0 13.84 h 16.5 v 40.32 h -16.5"/>
+		<path id="Goal area line" d="M 0 24.84 h 5.5 v 18.32 h -5.5"/>
+		<!-- <circle id="Penalty mark" r="0.75" cx="34" cy="10.94" fill="#fff" stroke="none"/> -->
+		<path id="Penalty arc" d="M 16.5 26.733027 a 9.15 9.15 0 0 1 0 14.533946"/>
+	</g>
+	<use xlink:href="#Penalty area" transform="rotate(180,52.5,34)"/>
+	<path id="Corner arcs" d="M 2 0 a 2 2 0 0 1 -2 2M 0 66 a 2 2 0 0 1 2 2M 103 68 a 2 2 0 0 1 2 -2M 105 2 a 2 2 0 0 1 -2 -2"/>
+</g>
+</svg>
