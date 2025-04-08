@@ -1,12 +1,12 @@
 import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
-import fixtures from '../assets/data/sample/fixtures.json'
+// import fixtures from '../assets/data/sample/fixtures.json'
 import LeagueScores from '../components/Home/LeagueScores';
 import { fetchFixturesByDate } from '../functions/APIData';
 import { parseAsTimestamp, useQueryState } from 'nuqs'
 import Filters from '../components/Home/Filters';
 
 function Home() {
-    const [matches, setMatches] = useState<any[]>((fixtures as any).response);
+    const [matches, setMatches] = useState<any[]>(new Array());
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [triggerFetch, setTriggerFetch] = useState<boolean>(false);
@@ -61,7 +61,7 @@ function Home() {
     useEffect(() => {
         const initLeagues = new Map<number, { collapsed: boolean, active: boolean, matches: any[] }>();
         homeLeagueIds.forEach((id) => {
-            const leagueMatches = matches.filter((match: any) => match.league.id === id);
+            const leagueMatches = matches?.filter((match: any) => match.league.id === id);
             initLeagues.set(id, { collapsed: false, active: leagueMatches.length > 0, matches: leagueMatches });
         });
         setHomeLeagues(initLeagues);
